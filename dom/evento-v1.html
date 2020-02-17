@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <p> {{ contador }} </p>
+        <button v-on:click="somar">Somar 1</button>
+        <button v-on:click="subtrair">Subtrai 1</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+
+            data: {
+                contador: 0
+            },
+
+            methods: {
+                somar(e) {
+                    console.log(e)                    
+                    this.contador++
+                },
+                subtrair(e) {
+                    console.log(e)                    
+                    this.contador--
+                }
+            },
+        })
+    </script>
+</body>
+</html>

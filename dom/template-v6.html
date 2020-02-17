@@ -3,14 +3,18 @@
 
 <head>
     <meta charset="UTF-8">   
-    <title>Vue.js 4</title>
+    <title>Vue.js 6</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body>
     <div id="app">
-        <p> {{ titulo }} </p>
-        <a v-bind:href="link"> Google </a>
+        <p v-once> {{ titulo }} </p>
+        <p> {{ saudacao() }} </p>
+        <a v-bind:href="link">Google</a>
+        <hr>
+        <p v-html="linkHtml"></p>
+        
     </div>
 
     <script>
@@ -18,12 +22,14 @@
             el: "#app",
 
             data: {
-                titulo: "Olá Mundo",
-                link: "http://www.google.com"
+                titulo: "Olá Planeta",
+                link: "http://www.google.com",
+                linkHtml: '<a href="http://www.google.com.br">Google Link</a>'
             },
 
             methods: {
                 saudacao() {
+                    this.titulo = "Achei o problema!"
                     return this.titulo
                 }
             }
