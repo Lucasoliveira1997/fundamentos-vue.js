@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Testes Variados</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p> {{ texto }} </p> 
+        <hr>
+        <a v-bind:href="link">Site Vue.js</a>
+        <hr>
+        <input v-on:keyup="espelha" type="text">
+        <p v-on:click="altera"> {{ palavra }} </p>
+        <hr>
+        <p v-html="listaHtml"></p>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+
+            data: {
+                texto: "Conteúdo para teste!!!",
+                link: 'https://vuejs.org/',
+                palavra: '',
+                listaHtml: `<ul>
+                                <li>Arroz</li>
+                                <li>Feijão</li>
+                                <li>Tomate</li>
+                                <li>Leite</li>
+                            </ul>`
+            },
+
+            methods: {
+                espelha(e) {
+                    this.palavra = e.target.value                    
+                },
+                altera(e) {
+                    this.palavra = 'Alterado'
+                    console.log(e)                    
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

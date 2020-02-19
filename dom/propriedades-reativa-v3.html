@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Propriedade Reativa V2</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <button v-on:click="aumenta">Aumenta</button>
+            <button v-on:click="contador2++">Aumenta 2</button>
+            <button v-on:click="diminui">Diminuir</button>
+
+            <p> {{ contador }} | {{ contador2 }} </P>
+            <p> {{ resultado }} </p>
+        </div>
+
+        <script>
+            new Vue({
+                el: "#app",
+                
+                data: {
+                    contador: 0,
+                    contador2: 0
+                },
+
+                computed: {
+                    resultado() {
+                        console.log('O metodo foi chamado')                        
+                        return this.contador >= 5 ? 'Maior ou igual a 5' : 'Menor que 5'                        
+                    }
+                },
+
+                watch: {
+                    contador(novo, antigo) {
+                        setInterval(() => {                                                   
+                            console.log(novo, antigo)                        
+                            this.contador++
+                        }, 2000)
+                    }
+                },
+
+                methods: {
+                    aumenta() {
+                        this.contador++                   
+                    },
+                    diminui() {
+                        this.contador--
+                    },
+                    // resultado() {
+                    //     console.log('O metodo foi chamado')                        
+                    //     return this.contador >= 5 ? 'Maior ou igual a 5' : 'Menor que 5'                        
+                    // }
+                }
+            })
+        </script>
+    </body>
+</html>
