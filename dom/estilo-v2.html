@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Estilo Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        
+        <style>
+            #app{    
+                display: flex;
+                justify-content: space-around;
+            }
+            .square {
+                background-color: gray;
+                height: 100px;
+                width: 100px;
+            }
+            .c1 {
+                background-color: greenyellow;
+            }
+            .c2 {
+                background-color: lightpink;
+            }
+            .c3 {
+                background-color: mediumslateblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="square" :class="estilo1"
+                @click="aplicaC1 = !aplicaC1"></div>
+            <div class="square" :class="{c2: aplicaC2}"
+                @click="aplicaC2 = !aplicaC2"></div>
+            <div class="square" :class="{c3: aplicaC3}"
+                @click="aplicaC3 = !aplicaC3"></div>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+
+                data: {
+                    aplicaC1: false,
+                    aplicaC2: false,
+                    aplicaC3: false
+                },
+
+                computed: {
+                    estilo1() {
+                        return {
+                            c1: this.aplicaC1,
+                            c2: !this.aplicaC1
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
