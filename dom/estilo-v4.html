@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Estilo Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        
+        <style>
+            .caixas{    
+                display: flex;
+                justify-content: space-around;
+            }
+            .square {
+                background-color: gray;
+                height: 100px;
+                width: 100px;
+            }
+            .c1 {
+                background-color: greenyellow;
+            }
+            .c2 {
+                background-color: lightpink;
+            }
+            .c3 {
+                background-color: mediumslateblue;
+            }
+            .girar {
+                transform: rotate(45deg);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="caixas"> 
+                <div class="square" :style="{backgroundColor: cor}"></div>
+                <div class="square" :style="[meuEstilo, {height: altura}]"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <hr>
+            <input type="text" v-model="cor">
+            <input type="text" v-model="largura">
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+
+                data: {
+                    cor: 'red',
+                    largura: 100,
+                    altura: 20
+                },
+
+                computed: {
+                    meuEstilo() {
+                        return {
+                            backgroundColor: this.cor,
+                            width: `${this.largura}px`
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

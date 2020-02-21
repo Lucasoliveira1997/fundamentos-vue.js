@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Estilo Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        
+        <style>
+            .caixas{    
+                display: flex;
+                justify-content: space-around;
+            }
+            .square {
+                background-color: gray;
+                height: 100px;
+                width: 100px;
+            }
+            .c1 {
+                background-color: greenyellow;
+            }
+            .c2 {
+                background-color: lightpink;
+            }
+            .c3 {
+                background-color: mediumslateblue;
+            }
+            .girar {
+                transform: rotate(45deg);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="caixas"> 
+                <div class="square" :class="estilo1"
+                @click="aplicaC1 = !aplicaC1"></div>
+                <div class="square" :class="{'girar': aplicaGiro}"
+                @click="aplicaC2 = !aplicaC2"></div>
+                <div class="square" :class="classeCss"
+                @click="aplicaC3 = !aplicaC3"></div>
+                <div class="square" :class="quadradoTeste"
+                @click="aplicaC3 = !aplicaC3"></div>
+            </div>
+            <hr>
+            <input type="text" v-model="classeCss">
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+
+                data: {
+                    aplicaC1: false,
+                    aplicaC2: false,
+                    aplicaC3: false,
+                    aplicaGiro: true,
+                    classeCss: 'c1'
+                },
+
+                computed: {
+                    estilo1() {
+                        return {
+                            c1: this.aplicaC1,
+                            c2: !this.aplicaC1
+                        }
+                    },
+                    quadradoTeste() {
+                        return {
+                            girar: this.aplicaGiro
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
