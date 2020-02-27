@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Condicionais V1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="status">Usuário Logado: {{ nome }}</p>
+        <p v-else>Nenhum usuário Logado</p>
+
+        <button @click="status = !status">{{ status ? 'Sair' : 'Entrar' }}</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+
+            data: {
+                nome: 'Lucas',
+                status: false
+            },
+        })
+    </script>
+</body>
+</html>
