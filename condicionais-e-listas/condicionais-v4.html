@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Condicionais V1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-if="status">
+            <p>Usuário Logado: {{ nome }}</p>
+            <p>Perfil: Admin</p>
+        </div> -->
+
+        <template v-if="status">
+            <p>Usuário Logado: {{ nome }}</p>
+            <p>Perfil: Admin</p>
+        </template>
+
+        <p v-else-if="anonimo">Navegação anônima</p>
+        <p v-else>Nenhum usuário Logado</p>
+
+        <button @click="status = !status">{{ status ? 'Sair' : 'Entrar' }}</button>
+        <input type="checkbox" v-model="anonimo">
+        
+        <hr>
+        <footer v-show="status">Desenvolvido para Você!</footer>
+        <footer v-show="!status">Desenvolvido para Você anonimo</footer>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+
+            data: {
+                nome: 'Lucas',
+                status: false,
+                anonimo: false,
+            },
+        })
+    </script>
+</body>
+</html>
