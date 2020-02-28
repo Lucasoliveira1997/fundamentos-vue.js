@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Listas V3</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+        <style>
+            ul {
+                list-style: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="(cor, index) in cores">{{index+1}}) {{ cor }}</li>
+            </ul>
+            
+            <hr>
+            <template v-for="(cor, index) in cores">
+                <h1>{{ cor }}</h1>
+                <p>{{ index }}</p>
+            </template>
+            <div v-for="(cor, index) in cores">
+                <h1>{{ cor }}</h1>
+                <p>{{ index }}</p>
+            </div>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+
+                data: {
+                    cores: ['azul', 'branco', 'rosa', 'verde'],
+                    pessoas: [
+                        {nome: 'Lucas', idade: 22, cidade: 'Carapicuiba'},
+                        {nome: 'Natalia', idade: 22, cidade: 'Sao Paulo'},
+                        {nome: 'Jubileu', idade: 75, cidade: 'Osasco'},
+                    ]
+                },
+            })
+        </script>
+    </body>
+</html>
