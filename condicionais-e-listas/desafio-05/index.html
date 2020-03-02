@@ -1,23 +1,47 @@
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="app.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>Desafio 5</title>
+</head>
 
-<div id="desafio">
-  <!-- 1) Ligue o botão para alternar a exibição dos dois
+<body>
+  <div id="app">
+      <!-- 1) Ligue o botão para alternar a exibição dos dois
     parágrafos. Use ambos v-if e v-show e inspecione os elementos
     para ver a diferença -->
   <h2>#01</h2>
   <div>
-    <button>Alterna</button>
-    <span v-for="n in 10">{{n}}</span>
-    <template>
-      <p>Você quer me ver ...</p>
-      <p>...ou eu</p>      
+    <button @click="alterna = !alterna">Alterna</button>
+    <template v-show="alterna">
+      <p>Exibe</p>
+      <p>Esse paragrafo SHOW</p>
     </template>
-    <template>
-      <p>Você quer me ver ...</p>
-      <p>...ou eu</p>
+    <template v-show="!alterna">
+      <p>Ou</p>
+      <p>Esse aqui SHOW</p>
     </template>
   </div>
+  </div>  
+  
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- 2) Exiba em uma <ul> um array de elementos da sua escolha.
     Imprima também o índice de cada elemento. -->
@@ -52,4 +76,4 @@
     
     </li>
   </ul>
-</div>
+

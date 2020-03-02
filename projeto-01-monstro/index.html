@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Matador de monstros</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div>
+                <div class="display-jogo">
+                    <p class="text-players">Jogador</p>
+                    <div class="barra-progresso">
+                        <div class="progresso"></div>
+                    </div>
+                    <p>100%</p>
+                </div>
+                <div class="display-jogo">
+                    <p class="text-players">Monstro</p>
+                    <div class="barra-progresso">
+                        <div class="progresso"></div>
+                    </div>
+                    <p>100%</p>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <button id="btnInicio">INICIAR NOVO JOGO</button>
+            </div>
+            <div>
+                <button id="btnAtaque">ATAQUE</button>
+                <button id="btnAtaqueEspecial">ATAQUE ESPECIAL</button>
+                <button id="btnCurar">CURAR</button>
+                <button id="btnDesistir">DESISTIR</button>
+            </div>        
+
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>

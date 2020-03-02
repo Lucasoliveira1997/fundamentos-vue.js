@@ -1,17 +1,19 @@
 new Vue({
-	el: '#desafio',
+    el: '#app',
 
-	data: {		
-		array: ['Pedro', 'Bia', 'Ana', 'Rebeca'],
-		livro: {
-			titulo: 'O Senhor dos Anéis',
+    data: {
+        alterna: true,
+        titulo: 'Olá Brasil',
+        array: ['Pedro', 'Bia', 'Ana', 'Rebecca'],
+        livro: {
+            titulo: 'O Senhor dos Anéis',
 			autor: 'J.R.R. Tolkiens',
 			volume: '3'
-		},
-		aluno: {
+        },
+        aluno: {
 			id: 10,
 			nome: 'Maria',
 			notas: [7.67, 8.33, 6.98, 9.21]
 		}
-	}
-});
+    }
+})
