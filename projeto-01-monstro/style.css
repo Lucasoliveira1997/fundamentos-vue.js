@@ -20,3 +20,47 @@
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.buttons {    
+    border: 1px solid black;
+    padding: 10px;
+    margin: 0px 10px;
+}
+
+#btnInicio {
+    background-color: blue;
+    color: white;    
+}
+
+#btnAtaque {
+    background-color: red;
+    color: white;
+}
+
+#btnAtaqueEspecial  {
+    background-color: yellow;
+    color: black;
+}
+
+#btnCurar {
+    background-color: green;
+    color: white;
+}
+
+#btnDesistir {
+    background-color: gray;
+    color: black;
+}
+
+.lista {
+    list-style: none;
+    text-align: center;    
+}
+
+.ulJogador {
+    background-color: cadetblue;
+}
+
+.ulMonstro {
+    background-color: coral;
+}
