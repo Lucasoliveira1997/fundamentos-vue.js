@@ -7,7 +7,10 @@ new Vue({
         monsterLife: 100,
         playerAttack: 0,
         monsterAttack: 0,
-        logs: ''
+        logs: '',
+        carregaProgresso: true,
+        playerLifeBar: '',
+        monsterLifeBar: ''
     },
 
     computed: {
@@ -17,6 +20,10 @@ new Vue({
     },
 
     methods: {
+        atualizaLife() {
+            this.playerLifeBar = `width: ${this.playerLife}%`
+            this.monsterLifeBar = `width: ${this.monsterLife}%`
+        },
         ataca() {
             let num = (Math.random().toFixed(1) * 20)
             let aditionalHurt = (Math.random().toFixed(1) * 10)
@@ -26,7 +33,9 @@ new Vue({
                 this.playerLife = (this.playerLife - num) - aditionalHurt
 
                 this.playerAttack = num
-                this.monsterAttack = num + aditionalHurt
+                this.monsterAttack = num + aditionalHurt     
+                
+                this.atualizaLife()
             }
 
             this.logs += `<li>MONSTRO ATINGIU O JOGADOR COM ${this.playerAttack} DE DANO</li>
@@ -41,11 +50,15 @@ new Vue({
 
             this.playerAttack = num + aditionalHurt
             this.monsterAttack = num
+
+            this.atualizaLife()
         },
         cura() {
-            if(playerLife <= 100) {
-                this.playerLife += (Math.random().toFixed(1) * 20)            
-                this.playerLife -= (Math.random().toFixed(1) * 20)
+            if(this.playerLife <= 100) {
+                this.playerLife += (Math.random().toFixed(1) * 20)      
+                this.playerLife -= (Math.random().toFixed(1) * 20)              
+
+                this.atualizaLife()
             }
         },
         desistir() {

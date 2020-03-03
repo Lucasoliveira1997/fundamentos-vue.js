@@ -23,9 +23,10 @@
         <button @click="status = !status">{{ status ? 'Sair' : 'Entrar' }}</button>
         <input type="checkbox" v-model="anonimo">
         
-        <hr>
+        <hr>        
         <footer v-show="status">Desenvolvido para Você!</footer>
         <footer v-show="!status">Desenvolvido para Você anonimo</footer>
+        
     </div>
 
     <script>

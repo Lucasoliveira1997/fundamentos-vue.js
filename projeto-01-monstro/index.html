@@ -12,14 +12,14 @@
             <div class="display-jogo">
                 <p class="text-players">Jogador</p>
                 <div class="barra-progresso">
-                    <div class="progresso"></div>
+                    <div class="progresso" :style="playerLifeBar"></div>
                 </div>
                 <p>{{ playerLife }}%</p>
             </div>
             <div class="display-jogo">
                 <p class="text-players">Monstro</p>
-                <div class="barra-progresso">
-                    <div class="progresso"></div>
+                <div class="barra-progresso" >
+                    <div class="progresso" :style="monsterLifeBar"></div>
                 </div>
                 <p>{{ monsterLife }}%</p>
             </div>

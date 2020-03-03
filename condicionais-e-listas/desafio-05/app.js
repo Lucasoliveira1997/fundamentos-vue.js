@@ -3,6 +3,7 @@ new Vue({
 
     data: {
         alterna: true,
+        carros: ['Agile', 'crv', 'corsa', 'opala'],
         titulo: 'Olá Brasil',
         array: ['Pedro', 'Bia', 'Ana', 'Rebecca'],
         livro: {

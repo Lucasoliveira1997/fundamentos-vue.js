@@ -6,8 +6,12 @@
 
 .progresso {
     height: 100%;
-    width: 50%;
+    width: 100%;
     background-color: green;
+}
+
+.lowLife { 
+    background-color: red;
 }
 
 .display-jogo {
@@ -25,30 +29,32 @@
     border: 1px solid black;
     padding: 10px;
     margin: 0px 10px;
+    border-radius: 8px;    
+    text-align: center;
 }
 
 #btnInicio {
-    background-color: blue;
+    background-color: #4169E1;
     color: white;    
 }
 
 #btnAtaque {
-    background-color: red;
+    background-color: #FF4500;
     color: white;
 }
 
 #btnAtaqueEspecial  {
-    background-color: yellow;
+    background-color: 	#FFD700;
     color: black;
 }
 
 #btnCurar {
-    background-color: green;
+    background-color:   #32CD32;
     color: white;
 }
 
 #btnDesistir {
-    background-color: gray;
+    background-color: #C0C0C0;
     color: black;
 }
 
