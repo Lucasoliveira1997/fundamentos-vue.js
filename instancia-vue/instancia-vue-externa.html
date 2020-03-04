@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mult Instancia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ titulo1 }}
+        <button @click="alterar">Alterar</button>
+    </div>
+    <div id="app2">
+        {{ titulo2 }}
+        <button @click="alterar">Alterar</button>
+    </div>
+
+    <script>
+        const vm1 = new Vue({
+            el: '#app',
+            data: {
+                titulo1: 'Olá Barueri'
+            },
+            methods: {
+                alterar() {                        
+                    vm2.titulo2 += 'Hello New York'
+                }
+            }
+        })
+
+        const vm2 = new Vue({
+            el: '#app2',
+            data: {
+                titulo2: 'Olá Osasco'
+            },
+            methods: {
+                alterar() {                        
+                    vm1.titulo1 += 'Hello New York'
+                }
+            }
+            
+        })
+
+        setTimeout(() => {
+            vm1.titulo1 = 'Alterado pelo timer '
+        },2000)
+    </script>
+</body>
+
+</html>

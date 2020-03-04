@@ -45,16 +45,18 @@ new Vue({
             let num = (Math.random().toFixed(1) * 20)
             let aditionalHurt = (Math.random().toFixed(1) * 10)
             
-            this.playerLife -= num
-            this.monsterLife = (this.monsterLife - num) - aditionalHurt
-
-            this.playerAttack = num + aditionalHurt
-            this.monsterAttack = num
-
-            this.atualizaLife()
+            if(this.playerLife > 0 && this.monsterLife > 0) {
+                this.playerLife -= num
+                this.monsterLife = (this.monsterLife - num) - aditionalHurt
+    
+                this.playerAttack = num + aditionalHurt
+                this.monsterAttack = num
+    
+                this.atualizaLife()
+            }
         },
         cura() {
-            if(this.playerLife <= 100) {
+            if(this.playerLife < 100) {
                 this.playerLife += (Math.random().toFixed(1) * 20)      
                 this.playerLife -= (Math.random().toFixed(1) * 20)              
 
@@ -65,6 +67,7 @@ new Vue({
             this.inicio =  !this.inicio
             this.playerLife = 100
             this.monsterLife = 100
+            this.atualizaLife()
         }
     }
 })
