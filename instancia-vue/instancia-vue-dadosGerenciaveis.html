@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mult Instancia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ titulo }}
+        <button @click="alterar">Alterar</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Olá Barueri'
+            },
+            methods: {
+                alterar() {                        
+                    this.titulo += '!'
+                }
+            }
+        })
+
+        vm.novaInfo = 'Teste'
+        console.log(vm.novaInfo)        
+    </script>
+</body>
+
+</html>
