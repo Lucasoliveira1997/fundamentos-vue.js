@@ -12,22 +12,25 @@
             <div class="display-jogo">
                 <p class="text-players">Jogador</p>
                 <div class="barra-progresso">
-                    <div class="progresso" :style="playerLifeBar"></div>
+                    <div class="progresso" :style="playerLifeBar" :class="{lowLife : playerLife < 20}"></div>
                 </div>
                 <p>{{ playerLife }}%</p>
             </div>
             <div class="display-jogo">
                 <p class="text-players">Monstro</p>
                 <div class="barra-progresso" >
-                    <div class="progresso" :style="monsterLifeBar"></div>
+                    <div class="progresso" :style="monsterLifeBar" :class="{lowLife : monsterLife < 20}"></div>
                 </div>
                 <p>{{ monsterLife }}%</p>
             </div>
         </div>
-        <span></span>
+        <div v-if="resultado">
+            <div v-if="monsterLife == 0" class="win">Você Venceu :)</div>
+            <class v-else class="lose">Você Perdeu :(</class>
+        </div>
         <hr>
         <div v-if="inicio">
-            <button id="btnInicio" class="buttons" @click="inicio = !inicio">INICIAR NOVO JOGO</button>
+            <button id="btnInicio" class="buttons" @click="iniciar">INICIAR NOVO JOGO</button>
         </div>
         <div v-else>
             <button id="btnAtaque" class="buttons" @click="ataca">ATAQUE</button>
@@ -36,10 +39,11 @@
             <button id="btnDesistir" class="buttons" @click="desistir">DESISTIR</button>
         </div>        
         <hr>
-        <ul class="lista">
-            <li class="ulMonstro">MONSTRO ATINGIU JOGADOR COM {{monsterAttack}}</li>
-            <li class="ulJogador">JOGADOR ATINGIU MONSTRO COM {{playerAttack}}</li>
-        </ul>
+        <div v-if="logs.length">
+            <ul class="lista">
+                <li v-for="log in logs" :class="log.cls"> {{log.text}} </li>
+            </ul>
+        </div>
 
     </div>
     <script src="app.js"></script>

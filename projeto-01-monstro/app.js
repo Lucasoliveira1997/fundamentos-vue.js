@@ -7,15 +7,17 @@ new Vue({
         monsterLife: 100,
         playerAttack: 0,
         monsterAttack: 0,
-        logs: '',
+        logs: [],
         carregaProgresso: true,
         playerLifeBar: '',
-        monsterLifeBar: ''
+        monsterLifeBar: '',
+        playerLog: '',
+        monsterLog: ''
     },
 
     computed: {
         resultado() {
-            return playerLife <= 0 ? 'Você Perdeu :(' : 'Você Ganhou :)'
+            return this.playerLife == 0 || this.monsterLife == 0
         }
     },
 
@@ -29,25 +31,27 @@ new Vue({
             let aditionalHurt = (Math.random().toFixed(1) * 10)
 
             if(this.playerLife > 0 && this.monsterLife > 0) {
-                this.monsterLife -= num  
-                this.playerLife = (this.playerLife - num) - aditionalHurt
+                this.monsterLife -= Math.max(num, 0)
+                this.playerLife = Math.max((this.playerLife - num) - aditionalHurt, 0)
 
                 this.playerAttack = num
-                this.monsterAttack = num + aditionalHurt     
+                this.monsterAttack = num + aditionalHurt   
                 
-                this.atualizaLife()
-            }
+                this.playerLog = `jogador atingiu monstro com ${this.playerAttack}.`
+                this.monsterLog = `monster atingiu jogador com ${this.monsterAttack}.`
+                this.registerLog(this.playerLog, '.ulJogador')
+                this.registerLog(this.monsterLog, '.ulMonstro')
 
-            this.logs += `<li>MONSTRO ATINGIU O JOGADOR COM ${this.playerAttack} DE DANO</li>
-                        <li>JOGADOR ATINGIU O MONSTRO COM ${this.playerAttack} DE DANO</li>`           
+                this.atualizaLife()
+            }                     
         },
         atacaEspecial(){
             let num = (Math.random().toFixed(1) * 20)
             let aditionalHurt = (Math.random().toFixed(1) * 10)
             
             if(this.playerLife > 0 && this.monsterLife > 0) {
-                this.playerLife -= num
-                this.monsterLife = (this.monsterLife - num) - aditionalHurt
+                this.playerLife -= Math.max(num, 0)
+                this.monsterLife = Math.max((this.monsterLife - num) - aditionalHurt, 0)
     
                 this.playerAttack = num + aditionalHurt
                 this.monsterAttack = num
@@ -56,18 +60,34 @@ new Vue({
             }
         },
         cura() {
-            if(this.playerLife < 100) {
-                this.playerLife += (Math.random().toFixed(1) * 20)      
-                this.playerLife -= (Math.random().toFixed(1) * 20)              
+            let heal = Math.min((Math.random().toFixed(1) * 20), 100)
+            this.playerLife = Math.min(this.playerLife + heal, 100)
+            this.playerLife -= (Math.random().toFixed(1) * 10)
 
-                this.atualizaLife()
-            }
+            this.atualizaLife()
+        },
+        iniciar() {
+            this.inicio =  !this.inicio
+            this.playerLife = 100
+            this.monsterLife = 100
+            this.atualizaLife()
+            this.logs = []
         },
         desistir() {
             this.inicio =  !this.inicio
             this.playerLife = 100
             this.monsterLife = 100
             this.atualizaLife()
+            this.logs = []
+        },
+        registerLog(text, cls) {
+            this.logs.unshift({ text, cls })                 
         }
-    }
+    },
+    watch: {
+        resultado(value) {
+            if(value)
+                this.inicio = true
+        }
+    },
 })

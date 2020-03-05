@@ -61,12 +61,23 @@
 .lista {
     list-style: none;
     text-align: center;    
+    text-transform: uppercase;
 }
 
 .ulJogador {
     background-color: cadetblue;
+    color: white;
 }
 
 .ulMonstro {
     background-color: coral;
+    color: white;
+}
+
+.win {
+    color: green;
+}
+
+.lose {
+    color: red;
 }
