@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mult Instancia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <comp></comp>        
+    </div>
+
+    <script>
+        Vue.component('comp', {
+            template:`
+                <div>
+                    <h1>Teste</h1>
+                    <button @click="alterarT1">Alterar</button>
+                    <h1>{{titulo2}}</h1>
+                    <button @click="alterarT2">Alterar</button>
+                </div>`            
+        })
+
+        const vm = new Vue({
+            data: function() {
+                return {
+                    titulo1: 'Olá Barueri',
+                    titulo2: 'Olá Carapicuiba'                    
+                }
+            },
+            methods: {
+                alterarT1() {                        
+                    this.titulo1 += '!'
+                },
+                alterarT2() {                        
+                    this.titulo2 += '!'
+                }
+            }
+        })
+        vm.$mount('#app')
+    </script>
+</body>
+
+</html>
