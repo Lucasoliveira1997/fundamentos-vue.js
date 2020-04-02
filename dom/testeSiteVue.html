@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Teste Vue</title>
+</head>
+<body>
+    <!-- https://api-pacientes.herokuapp.com/pacientes -->
+    <div id="app">
+        <h1>Pacientes</h1>
+        <ul>
+            <li v-for="patient in patients">{{ patient }} </li>
+            <button @click="buscar">Buscar Pacientes</button>
+        </ul>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                patients: ['Lucas', 'Natalia', 'Vitoria', 'Davi']
+            },
+            methods: {
+                buscar() {
+                    fetch('https://api-pacientes.herokuapp.com/pacientes')
+                        .then(resp => resp.json())
+                        .then(json => json.map(paciente => paciente.nome))
+                        .then(pacientes => pacientes.forEach(paciente => {
+                            app.patients.push(paciente)
+                        }))
+                }                
+            },
+        })
+        
+    </script>
+</body>
+</html>
